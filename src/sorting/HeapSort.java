@@ -7,6 +7,8 @@ public class HeapSort<T extends Comparable<T>> {
 	
 	private int N;
 	
+	private T min;
+	
 	@SuppressWarnings("unchecked")
 	public HeapSort(int max) {
 		
@@ -15,9 +17,19 @@ public class HeapSort<T extends Comparable<T>> {
 	
 	
 	public void insertar(T key) {
+	
 		
 		arreglo[++N]=key;
+		
 		haciaarriba(N);
+		if(N==1) {
+			min=key;
+		}
+		else {
+			if(key.compareTo(min)<0) {
+				min= key;
+			}
+		}
 
 	}
 	
@@ -39,7 +51,11 @@ public class HeapSort<T extends Comparable<T>> {
 		return N;
 	}
 	
+	public T min () {
+		return min;
+	}
 	
+
 	
 	
 	
