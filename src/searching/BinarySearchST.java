@@ -2,6 +2,7 @@ package searching;
 
 import java.util.Iterator;
 
+import edu.princeton.cs.algs4.Merge;
 import edu.princeton.cs.algs4.Queue;
 
 public class BinarySearchST <K extends Comparable <K>,V> implements Iterable<K> {
@@ -9,6 +10,7 @@ public class BinarySearchST <K extends Comparable <K>,V> implements Iterable<K> 
 	private K[] keys;
 	private V[] valores;
 	private int N;
+	private  Item [] item; 
 	
 	public BinarySearchST(int capacidad) {
 		
@@ -18,7 +20,43 @@ public class BinarySearchST <K extends Comparable <K>,V> implements Iterable<K> 
 	}
 	
 	
+	private class Item implements Comparable<Item> {
+
+		
+		K key; V value;
+		
+		Item(K key,V value) {
+			
+			this.key=key;
+			this.value=value;
+		}
+
+		@Override
+		public int compareTo(Item o) {
+			
+			if(this.key.compareTo(o.key)<1) {
+				return -1;
+			}
+			else if(this.key.compareTo(o.key)>1) {
+				return 1;
+			}
+			else
+				return 0;
+		}
+
+		
+	}
 	
+	
+	
+	public BinarySearchST(Item[] item) {
+		
+		this.item=item;
+		
+		Merge.sort(item);
+		
+	}
+
 	/**
 	 * 
 	 * @return El número de pares K-V presentes simultaneamente en los arreglos
@@ -140,6 +178,7 @@ public class BinarySearchST <K extends Comparable <K>,V> implements Iterable<K> 
 	        return queue;
 		
 	}
+	
 	
 	
 	@Override

@@ -6,6 +6,7 @@ public class SequentialSearchST<K extends Comparable<K>,V> {
 	
 	private Nodo actual;
 	private int N;
+	protected int esta=0;
 	
 	
 	class Nodo{
@@ -41,6 +42,7 @@ public class SequentialSearchST<K extends Comparable<K>,V> {
 		}
 		else if(actual.key.compareTo(k)==0) {
 			actual.value=v;
+			esta=1;
 			return;
 			
 		}
@@ -172,7 +174,7 @@ public class SequentialSearchST<K extends Comparable<K>,V> {
 		
 		System.out.println();
 		
-		hola.borrar("Perro63");
+		hola.borrar("Perro6");
 		
 		for(String s:hola.keys()) {
 			
