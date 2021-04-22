@@ -4,10 +4,10 @@ import edu.princeton.cs.algs4.Queue;
 
 public class LinearProbingHashST <K,V> {
 	
-	private int N;
-	private int M=16;
-	private K [] keys;
-	private V [] values;
+	protected int N;
+	protected int M=16;
+	protected K [] keys;
+	protected V [] values;
 	
 	public LinearProbingHashST() {
 		
@@ -29,7 +29,9 @@ public class LinearProbingHashST <K,V> {
 	
 	
 	
-	private int hash(K k) {
+	protected int hash(K k) {
+		
+
 		
 		return (k.hashCode() & 0x7fffffff) % M; 
 		
@@ -166,6 +168,9 @@ public class LinearProbingHashST <K,V> {
 
 	public static void main(String[] args) {
 
+		
+		
+		
 
 		LinearProbingHashST<String, Integer> lr= new LinearProbingHashST<>();
 		
@@ -190,7 +195,7 @@ public class LinearProbingHashST <K,V> {
 			System.out.print(s +" ");
 		}
 		
-		lr.borrar("L");
+		lr.borrar("C");
 		
 		System.out.println(lr.size());
 		

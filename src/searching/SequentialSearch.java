@@ -5,13 +5,13 @@ import edu.princeton.cs.algs4.Queue;
 public class SequentialSearch <Key,Value> {
 	
     private int n;           // number of key-value pairs
-    private Node first;      // the linked list of key-value pairs
+    protected Node first;      // the linked list of key-value pairs
     protected int esta=0;
 
-    private class Node {
-        private Key key;
-        private Value val;
-        private Node next;
+    class Node {
+         Key key;
+         Value val;
+         Node next;
 
         public Node(Key key, Value val, Node next)  {
             this.key  = key;
