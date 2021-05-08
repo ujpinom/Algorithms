@@ -8,16 +8,21 @@ import edu.princeton.cs.algs4.In;
 public class UndirectedGraph {
 	
 	
-	private int V;
-	private int E;
-	private Bag<Integer>[] adj;
+	protected int V;
+	protected int E;
+	protected Bag<Integer>[] adj;
+	
+	protected UndirectedGraph g;
+	
+	
+
+
 
 	/**
 	 * 
 	 * @param Construye un grafo de V vertices sin conexión entre ellos
 	 * 
 	 */
-	
 	
 	@SuppressWarnings("unchecked")
 	public  UndirectedGraph(int V) {
@@ -43,17 +48,46 @@ public class UndirectedGraph {
 		
 		int E= in.nextInt();
 		
-
-		for(int i=0;i<E;i++) {
+		 in.nextLine();
+		
+		while(in.hasNextLine()) {
+			String[] a= in.nextLine().split(" ");
 			
-
-			int v= in.nextInt();
-			int w= in.nextInt();
+			int n= a.length;
+			int v= Integer.parseInt(a[0]);
 			
-			addEdge(v, w);
-			
+			for(int i=1;i<n;i++) {
+				
+				addEdge(v, Integer.parseInt(a[i]));
+		
+			}
+	
 		}
 		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public  UndirectedGraph(UndirectedGraph g) {
+		
+		if(g==null) {
+			this.V=0;
+		}
+		else {
+		
+		this.g=g;
+		
+		this.V=g.V;
+		this.E=g.E;
+		
+		this.adj=(Bag<Integer>[]) new Bag[g.V()];
+		
+		
+		for(int i=0;i<g.V();i++) {
+			adj[i]= new Bag<Integer>();
+			adj[i]=g.adj[i];
+		}	
+		
+		}
 	}
 	
 	
@@ -128,6 +162,11 @@ public class UndirectedGraph {
 	}
 	
 	
+	public UndirectedGraph copyGrafo() {
+		return g;
+	}
+	
+	
 	/**
 	 * 
 	 * @param v
@@ -140,10 +179,38 @@ public class UndirectedGraph {
 		
 	}
 	
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public boolean hasEdges(int v,int w) {
+		
+		Bag<Integer> temp1= adj[v];
+		
+		Bag<Integer> temp2= adj[w];
+		
+		if(temp1.size()>=temp2.size()) {
+			
+			return hasEdges(temp2,v);
+		}
+		
+		
+		
+		else {
+			return hasEdges(temp1,w);
+		}
+		
+		
+	}
+	
+	private boolean hasEdges(Bag<Integer> bag, int v) {
+	
+		for(int s:bag) {
+			if(s==v) {
+				return true;
+			}
+			
+		}
+		
+		return false;
+		
+		
 	}
 
 }
