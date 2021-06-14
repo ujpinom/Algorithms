@@ -15,29 +15,10 @@ public class TestSearch {
 	{
 		
 	
-		int [][] original= {{1,2,3},{1,2,3},{1,2,3}};
-		
-		imprimir(original);
-		
-		int [][] reemplazo= new int[original.length][original[0].length];
-		
-		int n=original.length-1;
-		
-		
-		for(int i=0;i<original.length;i++) {
-			for(int j=0;j<original.length;j++) {
-				
-				reemplazo[j][i]=original[i][j];
-				
-			}
-		}
-		
-		System.out.println();
-		imprimir(reemplazo);
 		
 		
 		
-//	java.io.File file = new java.io.File("C:\\Users\\SONY\\Desktop\\tinyG.txt");
+//	java.io.File file = new java.io.File("C:\\Users\\SONY\\Desktop\\tinyDG.txt");
 //	
 //	String source="Kidman, Nicole";
 //	

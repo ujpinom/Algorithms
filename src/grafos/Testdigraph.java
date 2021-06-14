@@ -2,6 +2,7 @@ package grafos;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.Stack;
 
 import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.Digraph;
@@ -13,34 +14,45 @@ public class Testdigraph {
 	
 	public static void main(String a[]) throws FileNotFoundException {
 		
+
+
+ 		
 		
-		
-		
-		
-		
-		java.io.File file = new java.io.File("C:\\Users\\SONY\\Desktop\\tinyDG.txt");
-		
-		Scanner input = new Scanner(file);
-		
-		DiGraph g= new DiGraph(input);
-		
+//		
+//		g.addEdge(0, 1);
+//		g.addEdge(1, 2);
+//		
+//		g.addEdge(2, 3);
+//		g.addEdge(3, 0);
+//		
+//		
 //		System.out.println(g);
 //		
 //		
-//		DiGraph g1= g.invertir();
+//		Degrees d= new Degrees(g);
 //		
-//		System.out.println();
+//		System.out.println(d.inDegree(1));
+//		System.out.println(d.outDegree(1));
 //		
-//		System.out.println(g1);
-		
-		DirectedCycle ciclo= new DirectedCycle(g);
-		
-		System.out.println(ciclo.tieneCiclo());
-		
-		for(int s: ciclo.ciclo()) {
-			
-			System.out.print(s+" ");
-		}
+//		System.out.println(d.sources().size());
+//		
+//		System.out.println(d.sinks().size());
+//		
+//		for(int s: d.sinks()) {
+//			System.out.println(s);
+//		}
+//		
+//		System.out.println(d.isMap());
+	
+////		
+//		DirectedCycle ciclo= new DirectedCycle(g);
+//		
+//		System.out.println(ciclo.tieneCiclo());
+//		
+//		for(int s: ciclo.ciclo()) {
+//			
+//			System.out.print(s+" ");
+//		}
 		
 
 	}

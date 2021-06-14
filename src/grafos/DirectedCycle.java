@@ -62,8 +62,7 @@ public class DirectedCycle {
 		}
 		
 		enPila[v]= false;
-		
-		
+	
 	}
 	
 	public Iterable<Integer> ciclo(){

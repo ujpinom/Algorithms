@@ -2,8 +2,10 @@ package grafos;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.Stack;
 
 import edu.princeton.cs.algs4.Bag;
+import edu.princeton.cs.algs4.Digraph;
 
 public class DiGraph {
 	
@@ -12,6 +14,7 @@ public class DiGraph {
 	
 	private Bag<Integer> [] lista;
 	
+	private DiGraph copy;
 	
 	public DiGraph(int v) {
 		
@@ -25,6 +28,32 @@ public class DiGraph {
 			
 		}
 
+	}
+	
+	public DiGraph(DiGraph g) {
+		
+		copy= new DiGraph(g.V());
+		
+		Stack<Integer> temp= new Stack<>();
+		for(int i=0;i<g.V();i++) {
+			for(int w:g.adj(i) ) {
+			
+				temp.push(w);
+				
+			}
+		
+			while(!temp.empty()) {
+				
+				copy.addEdge(i, temp.pop());
+				
+			}
+
+		}
+		
+	}
+	
+	public DiGraph copyDiGraph() {
+		return copy;
 	}
 	
 	
@@ -54,7 +83,7 @@ public class DiGraph {
 		return E;
 	}
 	
-	public Iterable<Integer> adj(int v){
+	public Bag<Integer> adj(int v){
 		
 		return lista[v];
 	}
@@ -78,6 +107,25 @@ public class DiGraph {
 	}
 	
 	
+	public boolean hasEdge(int v,int w) {
+		
+		if(v>=V) {
+			throw new IllegalArgumentException("primer argumento mayor o igual al número de vertices del digrafo");
+		}
+
+		for(int s: adj(v)) {
+			
+			if(s==w) {
+				return true;
+			}
+			
+		}
+		
+		return false;
+		
+	}
+	
+	
 	public String toString() {
 		
 		String s = V + " vertices, " + E + " edges\n";
@@ -91,6 +139,10 @@ public class DiGraph {
 		
 		return s;
 		
+	}
+	
+	public Iterable<Integer>[] lista(){
+		return lista;
 	}
 	
 	public void addEdge(int v, int w) {
